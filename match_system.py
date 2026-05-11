@@ -163,6 +163,13 @@ MAJOR_CONFIG = {
     "social": {"special": SOCIAL_SPECIAL, "majors": SOCIAL_MAJORS, "rules": SOCIAL_RULES}
 }
 
+# ======================= 有效院校集合 =======================
+ALL_UNIVERSITIES = set()
+for _schools in UNIVERSITY_TIERS.values():
+    ALL_UNIVERSITIES.update(_schools)
+for _cfg in MAJOR_CONFIG.values():
+    ALL_UNIVERSITIES.update(_cfg["special"])
+
 # ======================= 核心函数 自动评级 =======================
 def get_tier(uni_name, major_type):
     for t, schools in UNIVERSITY_TIERS.items():

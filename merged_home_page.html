@@ -33,6 +33,7 @@
             <div class="flex items-center space-x-8 font-medium">
                 <button onclick="navigateTo('university')" class="hover:text-indigo-300 transition-colors border-b-2 border-transparent hover:border-indigo-300 pb-1">University</button>
                 <button onclick="navigateTo('programme')" class="hover:text-indigo-300 transition-colors border-b-2 border-transparent hover:border-indigo-300 pb-1">Programme</button>
+                <button type="button" onclick="openProgrammeSearchModal()" class="hover:text-indigo-300 transition-colors border-b-2 border-transparent hover:border-indigo-300 pb-1">Search</button>
                 <button onclick="navigateTo('match')" class="hover:text-indigo-300 transition-colors border-b-2 border-transparent hover:border-indigo-300 pb-1">Match</button>
             </div>
         </div>
@@ -326,10 +327,6 @@
                     </div>
                     <div class="z-10">
                         <h1 id="detail-name" class="text-3xl font-bold text-slate-900 mb-2">University Name</h1>
-                        <div class="flex space-x-3">
-                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-semibold rounded-full">QS Top 100</span>
-                            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-full">公立大学</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -363,7 +360,12 @@
         </div>
         <div id="page-match" class="page">
             <main class="max-w-6xl mx-auto px-6 py-8">
-                <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight mb-8">AI Profile Match</h1>
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                    <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">AI Profile Match</h1>
+                    <button type="button" onclick="openProgrammeSearchModal()" class="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-bold shadow-sm hover:border-purple-300 hover:text-purple-700 hover:shadow-md transition-all">
+                        <span aria-hidden="true">🔍</span> Search programmes
+                    </button>
+                </div>
                 <p class="text-xs text-slate-500 max-w-3xl mx-auto mb-4 leading-relaxed"><span class="font-semibold text-slate-600">Tier lists are incremental:</span> Top3 shows HKU, CUHK, HKUST only; Top5 adds CityU and PolyU only; 全港八大 adds HKBU, LingnanU, and EdUHK only. Match cards below spell this out for each tier.</p>
                 <div class="bg-white p-10 rounded-3xl shadow-xl max-w-3xl mx-auto border-t-8 border-purple-500">
                     <form class="space-y-6" onsubmit="event.preventDefault(); handleMatch()">
@@ -902,10 +904,144 @@
                 container.innerHTML = '<div class="text-center text-red-500 py-8">❌ Request failed</div>';
             }
         }
+
+        let _programmeSearchCache = null;
+
+        function openProgrammeSearchModal() {
+            const m = document.getElementById('programme-search-modal');
+            if (!m) return;
+            m.classList.remove('hidden');
+            m.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('overflow-hidden');
+            const inp = document.getElementById('programme-search-input');
+            const out = document.getElementById('programme-search-results');
+            if (out) {
+                out.innerHTML = '<p class="text-slate-500 text-sm">' + escapeHtml('Enter a keyword and press Search or Enter.') + '</p>';
+            }
+            if (inp) {
+                inp.focus();
+                inp.select();
+            }
+        }
+
+        function closeProgrammeSearchModal() {
+            const m = document.getElementById('programme-search-modal');
+            if (!m) return;
+            m.classList.add('hidden');
+            m.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        async function runProgrammeSearch() {
+            const resultsEl = document.getElementById('programme-search-results');
+            const input = document.getElementById('programme-search-input');
+            if (!resultsEl || !input) return;
+            const q = input.value.trim();
+            if (!q) {
+                resultsEl.innerHTML = '<p class="text-amber-700 text-sm">' + escapeHtml('Please enter a programme name or keyword.') + '</p>';
+                return;
+            }
+            resultsEl.innerHTML = '<p class="text-slate-500 text-sm">' + escapeHtml('Loading…') + '</p>';
+            try {
+                let all;
+                if (_programmeSearchCache) {
+                    all = _programmeSearchCache;
+                } else {
+                    const res = await fetch('/api/programs');
+                    const data = await res.json();
+                    if (!Array.isArray(data)) {
+                        const err = typeof data.error === 'string' ? data.error : 'Could not load programmes.';
+                        resultsEl.innerHTML = '<p class="text-red-600 text-sm">' + escapeHtml(err) + '</p>';
+                        return;
+                    }
+                    _programmeSearchCache = data;
+                    all = data;
+                }
+                const ql = q.toLowerCase();
+                const matches = all.filter(p => String(p.Programme || '').toLowerCase().includes(ql));
+                if (matches.length === 0) {
+                    resultsEl.innerHTML = '<p class="text-slate-600 text-sm">' + escapeHtml('No programmes matched your search.') + '</p>'
+                        + '<p class="text-xs text-slate-400 mt-2">' + escapeHtml('Query: ' + q) + '</p>';
+                    return;
+                }
+                const rows = matches.map(p => `
+                    <tr class="hover:bg-slate-50 align-top">
+                        <td class="py-2 px-3 border-b border-slate-100">${escapeHtml(p.University)}</td>
+                        <td class="py-2 px-3 border-b border-slate-100 font-medium text-slate-800">${escapeHtml(p.Programme)}</td>
+                        <td class="py-2 px-3 border-b border-slate-100">${escapeHtml(p.Category)}</td>
+                        <td class="py-2 px-3 border-b border-slate-100 whitespace-nowrap">${escapeHtml(p.Duration)}</td>
+                        <td class="py-2 px-3 border-b border-slate-100 whitespace-nowrap">${escapeHtml(p['Apply date'])}</td>
+                        <td class="py-2 px-3 border-b border-slate-100">${escapeHtml(p.IELTS)}</td>
+                        <td class="py-2 px-3 border-b border-slate-100">${escapeHtml(p.TOEFL != null && p.TOEFL !== undefined ? String(p.TOEFL) : '')}</td>
+                    </tr>
+                `).join('');
+                resultsEl.innerHTML = `
+                    <p class="text-xs text-slate-500 mb-3">${escapeHtml(String(matches.length) + ' programme(s) matched.')}</p>
+                    <div class="overflow-x-auto rounded-lg border border-slate-200">
+                        <table class="w-full text-left text-xs sm:text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-600 uppercase tracking-wider text-[10px] sm:text-xs">
+                                    <th class="py-2.5 px-3 font-semibold">University</th>
+                                    <th class="py-2.5 px-3 font-semibold">Programme</th>
+                                    <th class="py-2.5 px-3 font-semibold">Category</th>
+                                    <th class="py-2.5 px-3 font-semibold">Duration</th>
+                                    <th class="py-2.5 px-3 font-semibold">Apply date</th>
+                                    <th class="py-2.5 px-3 font-semibold">IELTS</th>
+                                    <th class="py-2.5 px-3 font-semibold">TOEFL</th>
+                                </tr>
+                            </thead>
+                            <tbody>${rows}</tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3 italic leading-relaxed">Application deadlines are indicative. Please check the universities&#39; official websites for the most accurate dates.</p>`;
+            } catch (e) {
+                resultsEl.innerHTML = '<p class="text-red-600 text-sm">' + escapeHtml(e && e.message ? e.message : 'Request failed') + '</p>';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             initUniversities();
             initProgrammeCategories();
+            const bd = document.getElementById('programme-search-backdrop');
+            const closeBtn = document.getElementById('programme-search-close');
+            const submitBtn = document.getElementById('programme-search-submit');
+            const searchInput = document.getElementById('programme-search-input');
+            if (closeBtn) closeBtn.addEventListener('click', closeProgrammeSearchModal);
+            if (bd) bd.addEventListener('click', closeProgrammeSearchModal);
+            if (submitBtn) submitBtn.addEventListener('click', runProgrammeSearch);
+            if (searchInput) {
+                searchInput.addEventListener('keydown', e => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        runProgrammeSearch();
+                    }
+                });
+            }
+            document.addEventListener('keydown', e => {
+                if (e.key !== 'Escape') return;
+                const m = document.getElementById('programme-search-modal');
+                if (m && !m.classList.contains('hidden')) closeProgrammeSearchModal();
+            });
         });
     </script>
+
+    <!-- Programme search modal (all universities; CSV/API fields escaped in JS) -->
+    <div id="programme-search-modal" class="fixed inset-0 z-[100] hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="programme-search-title">
+        <div id="programme-search-backdrop" class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"></div>
+        <div class="absolute inset-0 overflow-y-auto py-8 px-4 flex items-start justify-center pointer-events-none">
+            <div class="pointer-events-auto w-full max-w-5xl bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col max-h-[min(85vh,900px)] my-auto">
+                <div class="flex items-center justify-between gap-4 p-4 sm:p-5 border-b border-slate-100 shrink-0">
+                    <h2 id="programme-search-title" class="text-lg sm:text-xl font-bold text-slate-800">Search programmes</h2>
+                    <button type="button" id="programme-search-close" class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition" aria-label="Close search">&times;</button>
+                </div>
+                <div class="p-4 sm:p-5 border-b border-slate-100 shrink-0 flex flex-col sm:flex-row gap-3">
+                    <label class="sr-only" for="programme-search-input">Programme name</label>
+                    <input type="search" id="programme-search-input" autocomplete="off" placeholder="Type part of a programme name…" class="flex-1 min-w-0 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:ring-2 focus:ring-purple-400 focus:border-transparent">
+                    <button type="button" id="programme-search-submit" class="shrink-0 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-sm font-bold hover:from-purple-700 hover:to-indigo-700 shadow-md transition">Search</button>
+                </div>
+                <div id="programme-search-results" class="overflow-auto flex-1 min-h-0 p-4 sm:p-5 text-sm text-slate-600"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

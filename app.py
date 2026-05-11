@@ -6,7 +6,7 @@ import logging
 import os
 from typing import Optional
 
-from match_system import MAJOR_CONFIG, recommend
+from match_system import ALL_UNIVERSITIES, MAJOR_CONFIG, recommend
 
 app = Flask(__name__, static_url_path='')
 
@@ -190,6 +190,9 @@ def api_match():
         ielts = score_to_ielts_for_filter(exam_type, score)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
+    if university not in ALL_UNIVERSITIES:
+        logger.warning("Invalid university input: %r", university)
+        return jsonify({"error": f"未收录该本科院校: '{university}'"}), 400
     result = recommend(university, gpa, ielts, major_type)
 
     category = MAJOR_TYPE_TO_CATEGORY.get(major_type, "Business")
@@ -260,6 +263,7 @@ def api_programs():
                         "Programme": row["Programme"],
                         "Category": row["Category"],
                         "IELTS": row["IELTS"],
+                        "TOEFL": row.get("TOEFL", ""),
                         "Duration": row["Duration"],
                         "Apply date": row["Apply date"]
                     })
