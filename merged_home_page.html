@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港八大留学申请平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .page { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
+        .page.active { display: block; opacity: 1; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        #slider-container { transition: transform 0.5s ease-in-out; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen selection:bg-indigo-200 selection:text-indigo-900">
+    <nav class="bg-gradient-to-r from-slate-900 to-indigo-900 text-white shadow-lg sticky top-0 z-50 bg-opacity-95 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4 cursor-pointer hover:opacity-80 transition" onclick="navigateTo('home')">
+                <div class="w-10 h-10 bg-white text-indigo-900 flex items-center justify-center font-black rounded-xl shadow-inner text-xl">U</div>
+                <span class="text-2xl font-bold tracking-tight">HK UniMatch</span>
+            </div>
+            
+            <div class="flex items-center space-x-8 font-medium">
+                <button onclick="navigateTo('university')" class="hover:text-indigo-300 transition-colors border-b-2 border-transparent hover:border-indigo-300 pb-1">University</button>
+                <button onclick="navigateTo('programme')" class="hover:text-indigo-300 transition-colors border-b-2 border-transparent hover:border-indigo-300 pb-1">Programme</button>
+                <button onclick="navigateTo('match')" class="hover:text-indigo-300 transition-colors border-b-2 border-transparent hover:border-indigo-300 pb-1">Match</button>
+            </div>
+        </div>
+    </nav>
+    <div id="page-home" class="page active">
+        <div class="w-full h-[400px] overflow-hidden shadow-xl mb-8 relative group">
+            <div id="slider-container" class="w-full h-full flex">
+                <div class="w-full h-full relative flex-none">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/70 to-transparent z-10"></div>
+                    <img src="https://aka.doubaocdn.com/s/Q6051wWWWW?alice_filename=%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20260509173759_100_386.png" alt="HK 8 Universities Logo" class="w-full h-full object-cover">
+                    <div class="absolute top-1/2 left-12 -translate-y-1/2 z-20 text-left">
+                        <h2 class="text-5xl font-extrabold text-white mb-4 drop-shadow-md">Unlock Your Future</h2>
+                        <p class="text-xl text-indigo-100 font-medium">Your Exclusive Guide to HK 8 Universities</p>
+                    </div>
+                </div>
+                <div class="w-full h-full relative flex-none">
+                    <div class="absolute inset-0 bg-slate-900/40 z-10"></div>
+                    <img src="https://aka.doubaocdn.com/s/Ui5D1wOBZZ" alt="HKU Main Building" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center z-20 text-center">
+                        <h2 class="text-4xl font-extrabold text-white drop-shadow-lg">香港大学 - Century-old Institution</h2>
+                    </div>
+                </div>
+                <div class="w-full h-full relative flex-none">
+                    <div class="absolute inset-0 bg-slate-900/40 z-10"></div>
+                    <img src="https://aka.doubaocdn.com/s/yv231wOBZl" alt="CUHK Gate" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center z-20 text-center">
+                        <h2 class="text-4xl font-extrabold text-white drop-shadow-lg">香港中文大学 - Humanities & Excellence</h2>
+                    </div>
+                </div>
+                <div class="w-full h-full relative flex-none">
+                    <div class="absolute inset-0 bg-slate-900/40 z-10"></div>
+                    <img src="https://aka.doubaocdn.com/s/EMrC1wOBZw" alt="HKUST Campus" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center z-20 text-center">
+                        <h2 class="text-4xl font-extrabold text-white drop-shadow-lg">香港科技大学 - Innovation Frontiers</h2>
+                    </div>
+                </div>
+                <div class="w-full h-full relative flex-none">
+                    <div class="absolute inset-0 bg-slate-900/40 z-10"></div>
+                    <img src="https://aka.doubaocdn.com/s/1Vlh1wOBa2" alt="PolyU Campus" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center z-20 text-center">
+                        <h2 class="text-4xl font-extrabold text-white drop-shadow-lg">香港理工大学 - Applied Learning</h2>
+                    </div>
+                </div>
+                <div class="w-full h-full relative flex-none">
+                    <div class="absolute inset-0 bg-slate-900/40 z-10"></div>
+                    <img src="https://aka.doubaocdn.com/s/6UrP1wOBaB" alt="CityU Campus" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center z-20 text-center">
+                        <h2 class="text-4xl font-extrabold text-white drop-shadow-lg">香港城市大学 - Urban Professionalism</h2>
+                    </div>
+                </div>
+                <div class="w-full h-full relative flex-none">
+                    <div class="absolute inset-0 bg-slate-900/40 z-10"></div>
+                    <img src="https://aka.doubaocdn.com/s/jMmP1wOBaI" alt="HKBU Campus" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center z-20 text-center">
+                        <h2 class="text-4xl font-extrabold text-white drop-shadow-lg">香港浸会大学 - Holistic Education</h2>
+                    </div>
+                </div>
+                <div class="w-full h-full relative flex-none">
+                    <div class="absolute inset-0 bg-slate-900/40 z-10"></div>
+                    <img src="https://aka.doubaocdn.com/s/uOzt1wOBaN" alt="LU Gate" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center z-20 text-center">
+                        <h2 class="text-4xl font-extrabold text-white drop-shadow-lg">岭南大学 - Liberal Arts Model</h2>
+                    </div>
+                </div>
+                <div class="w-full h-full relative flex-none">
+                    <div class="absolute inset-0 bg-slate-900/40 z-10"></div>
+                    <img src="https://aka.doubaocdn.com/s/d9kn1wOBaU" alt="EdUHK Gate" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center z-20 text-center">
+                        <h2 class="text-4xl font-extrabold text-white drop-shadow-lg">香港教育大学 - Teacher Education</h2>
+                    </div>
+                </div>
+            </div>
+            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white/50 text-white p-3 rounded-full backdrop-blur transition opacity-0 group-hover:opacity-100">❮</button>
+            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white/50 text-white p-3 rounded-full backdrop-blur transition opacity-0 group-hover:opacity-100">❯</button>
+            
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-white opacity-100 slide-dot transition"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 slide-dot transition"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 slide-dot transition"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 slide-dot transition"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 slide-dot transition"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 slide-dot transition"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 slide-dot transition"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 slide-dot transition"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 slide-dot transition"></div>
+            </div>
+        </div>
+        <main class="max-w-6xl mx-auto px-6 py-0">
+            <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 mb-8 flex flex-col">
+                <h2 class="text-2xl font-bold text-slate-800 flex items-center mb-6 border-b border-slate-100 pb-4">
+                    <span class="mr-2">📰</span> Latest News
+                </h2>
+                <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="https://www.ioehighereducation.com/News/Article/2081" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs text-indigo-600 font-bold">Policy Update</span>
+                            <span class="text-xs text-slate-400">2025-09-18</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm">Non-local Student Quota Increased to 50% from 2026/27</h3>
+                    </a>
+                    <a href="https://www.hku.edu/press/press-releases/detail/28424.html" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs text-indigo-600 font-bold">HKU News</span>
+                            <span class="text-xs text-slate-400">2025-08-06</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm">HKU Promotes Holistic Student Development</h3>
+                    </a>
+                    <a href="https://qiantum.xdf.cn/news/chongqing_7788984.shtml" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs text-indigo-600 font-bold">Programme Update</span>
+                            <span class="text-xs text-slate-400">2025-12-08</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm">12 New Programmes Launched in 2025, FinTech & Metaverse Hot</h3>
+                    </a>
+                    <a href="https://www.dotdotnews.com/a/202501/14/AP6785eabae4b079cd3fc3630a.html" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs text-indigo-600 font-bold">Tuition Adjustment</span>
+                            <span class="text-xs text-slate-400">2025-01-14</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm">Non-local Tuition Adjusted, CUHK Has Highest Increase</h3>
+                    </a>
+                    <a href="https://m.sohu.com/a/931379561_121777481/" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs text-indigo-600 font-bold">Application Guide</span>
+                            <span class="text-xs text-slate-400">2025-09-03</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-sm">2026 Application Guide: University Features & Preferences</h3>
+                    </a>
+                    <div id="news-more" class="contents">
+                        <a href="https://www.hku.edu/press/press-releases/detail/28542.html" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-indigo-600 font-bold">Research Update</span>
+                                <span class="text-xs text-slate-400">2025-08-17</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-sm">HKU leads in RGC's research funding exercise for 2025/26</h3>
+                        </a>
+                        <a href="https://www.news.gov.hk/eng/2025/10/20251009/20251009_104243_010.html" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-indigo-600 font-bold">Ranking Update</span>
+                                <span class="text-xs text-slate-400">2025-10-09</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-sm">HK Universities Achieve Record High Rankings in THE 2026</h3>
+                        </a>
+                        <a href="http://m.toutiao.com/group/7577000947130565154/" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-indigo-600 font-bold">Admission Update</span>
+                                <span class="text-xs text-slate-400">2025-11-26</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-sm">CityU withdraws from National Unified Entrance Examination</h3>
+                        </a>
+                        <a href="https://www.hku.edu.hk/press/all/2026/4/" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-indigo-600 font-bold">HKU News</span>
+                                <span class="text-xs text-slate-400">2026-04-30</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-sm">HKU Excellence Awards Presentation Ceremony for 2025</h3>
+                        </a>
+                        <a href="https://www.hkust.edu.hk/news" target="_blank" class="block p-4 rounded-xl hover:bg-indigo-50 transition-colors border border-slate-100 hover:border-indigo-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-indigo-600 font-bold">HKUST News</span>
+                                <span class="text-xs text-slate-400">2025-10-09</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-sm">HKUST jumps 8 places to 58th in THE World Rankings 2026</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 mb-8 flex flex-col">
+                <div class="flex-grow flex flex-col">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-2 text-center">Hong Kong's Top 8 Universities Rankings 2026</h2>
+                    <p class="text-slate-500 text-center mb-4">Latest Rankings from Major International Ranking Bodies</p>
+                    
+                    <div class="overflow-x-auto flex-grow">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="bg-slate-800 text-white">
+                                    <th class="px-3 py-3 text-left rounded-tl-lg">Rank</th>
+                                    <th class="px-3 py-3 text-left">University</th>
+                                    <th class="px-3 py-3 text-center">QS World<br>Rankings 2026</th>
+                                    <th class="px-3 py-3 text-center">THE World<br>Rankings 2026</th>
+                                    <th class="px-3 py-3 text-center rounded-tr-lg">ARWU Global<br>Rankings 2025*</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-3 py-3 font-bold">1</td>
+                                    <td class="px-3 py-3 flex items-center gap-2">
+                                        <img src="https://aka.doubaocdn.com/s/c8wI1wNlJt" alt="HKU Logo" class="w-8 h-8">
+                                        <span>The University of Hong Kong (HKU)</span>
+                                    </td>
+                                    <td class="px-3 py-3 text-center font-medium">11</td>
+                                    <td class="px-3 py-3 text-center font-medium">33</td>
+                                    <td class="px-3 py-3 text-center font-medium">101-150</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-3 py-3 font-bold">2</td>
+                                    <td class="px-3 py-3 flex items-center gap-2">
+                                        <img src="https://aka.doubaocdn.com/s/7t2O1wNlK1" alt="CUHK Logo" class="w-8 h-8">
+                                        <span>The Chinese University of Hong Kong (CUHK)</span>
+                                    </td>
+                                    <td class="px-3 py-3 text-center font-medium">32</td>
+                                    <td class="px-3 py-3 text-center font-medium">41</td>
+                                    <td class="px-3 py-3 text-center font-medium">101-150</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-3 py-3 font-bold">3</td>
+                                    <td class="px-3 py-3 flex items-center gap-2">
+                                        <img src="https://aka.doubaocdn.com/s/U5rp1wNlK7" alt="HKUST Logo" class="w-8 h-8">
+                                        <span>The Hong Kong University of Science and Technology (HKUST)</span>
+                                    </td>
+                                    <td class="px-3 py-3 text-center font-medium">44</td>
+                                    <td class="px-3 py-3 text-center font-medium">58</td>
+                                    <td class="px-3 py-3 text-center font-medium">101-150</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-3 py-3 font-bold">4</td>
+                                    <td class="px-3 py-3 flex items-center gap-2">
+                                        <img src="https://aka.doubaocdn.com/s/9Z191wNlKK" alt="PolyU Logo" class="w-8 h-8">
+                                        <span>The Hong Kong Polytechnic University (PolyU)</span>
+                                    </td>
+                                    <td class="px-3 py-3 text-center font-medium">54</td>
+                                    <td class="px-3 py-3 text-center font-medium">83</td>
+                                    <td class="px-3 py-3 text-center font-medium">151-200</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-3 py-3 font-bold">5</td>
+                                    <td class="px-3 py-3 flex items-center gap-2">
+                                        <img src="https://aka.doubaocdn.com/s/wFzh1wNlKD" alt="CityU Logo" class="w-8 h-8">
+                                        <span>City University of Hong Kong (CityU)</span>
+                                    </td>
+                                    <td class="px-3 py-3 text-center font-medium">63</td>
+                                    <td class="px-3 py-3 text-center font-medium">75</td>
+                                    <td class="px-3 py-3 text-center font-medium">99</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-3 py-3 font-bold">6</td>
+                                    <td class="px-3 py-3 flex items-center gap-2">
+                                        <img src="https://aka.doubaocdn.com/s/SV4W1wNlKQ" alt="HKBU Logo" class="w-8 h-8">
+                                        <span>Hong Kong Baptist University (HKBU)</span>
+                                    </td>
+                                    <td class="px-3 py-3 text-center font-medium">244</td>
+                                    <td class="px-3 py-3 text-center font-medium">201-250</td>
+                                    <td class="px-3 py-3 text-center font-medium">301-400</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-3 py-3 font-bold">7</td>
+                                    <td class="px-3 py-3 flex items-center gap-2">
+                                        <img src="https://aka.doubaocdn.com/s/sQ8B1wNlKc" alt="EdUHK Logo" class="w-8 h-8">
+                                        <span>The Education University of Hong Kong (EdUHK)</span>
+                                    </td>
+                                    <td class="px-3 py-3 text-center font-medium">530</td>
+                                    <td class="px-3 py-3 text-center font-medium">195</td>
+                                    <td class="px-3 py-3 text-center font-medium">Not Ranked</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-3 py-3 font-bold">8</td>
+                                    <td class="px-3 py-3 flex items-center gap-2">
+                                        <img src="https://aka.doubaocdn.com/s/YL1D1wNlKW" alt="LU Logo" class="w-8 h-8">
+                                        <span>Lingnan University (LU)</span>
+                                    </td>
+                                    <td class="px-3 py-3 text-center font-medium">701-710</td>
+                                    <td class="px-3 py-3 text-center font-medium">301-350</td>
+                                    <td class="px-3 py-3 text-center font-medium">601-700</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-4 text-center">* Note: ARWU 2026 edition not yet released, using latest 2025 official data. Sources: QS, THE, ShanghaiRanking Official Websites</p>
+                </div>
+            </div>
+        </main>
+    </div>
+        <div id="page-university" class="page">
+            <main class="max-w-6xl mx-auto px-6 py-8">
+                <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight mb-8">香港八大名校 (HK Universities)</h1>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="uni-grid"></div>
+            </main>
+        </div>
+        <div id="page-univ-detail" class="page">
+            <main class="max-w-6xl mx-auto px-6 py-8">
+                <div class="flex items-center mb-8">
+                    <button onclick="navigateTo('university')" class="text-slate-500 hover:text-indigo-600 flex items-center mr-4 transition-colors font-medium bg-white px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all">
+                        <span class="mr-2">←</span> 返回院校列表
+                    </button>
+                </div>
+                <div class="bg-white p-10 rounded-3xl shadow-lg flex items-center space-x-8 mb-8 border-t-8 border-indigo-900 relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-indigo-50 rounded-full opacity-50"></div>
+                    <div id="detail-logo-container" class="w-32 h-32 flex items-center justify-center bg-white p-2 rounded-2xl shadow-sm z-10 border border-slate-100">
+                        <img id="detail-logo" src="" alt="Logo" class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="z-10">
+                        <h1 id="detail-name" class="text-3xl font-bold text-slate-900 mb-2">University Name</h1>
+                        <div class="flex space-x-3">
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-semibold rounded-full">QS Top 100</span>
+                            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-full">公立大学</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-slate-200">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-2">🎓</span> 专业列表 (Programme List)</h2>
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-sm uppercase tracking-wider">
+                                    <th class="py-4 px-6 font-semibold">Programme Name</th>
+                                    <th class="py-4 px-6 font-semibold">Category</th>
+                                    <th class="py-4 px-6 font-semibold">Duration</th>
+                                    <th class="py-4 px-6 font-semibold">IELTS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detail-programmes" class="divide-y divide-slate-100 text-slate-700">
+                                </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3 pt-2 border-t border-slate-100 italic leading-relaxed">Application deadlines are indicative. Please check the universities&#39; official websites for the most accurate dates.</p>
+                </div>
+            </main>
+        </div>
+        <div id="page-programme" class="page">
+            <main class="max-w-6xl mx-auto px-6 py-8">
+                <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight mb-8">学科分类 (Programme Categories)</h1>
+                <p class="text-slate-500 mb-6">点击下方大类展开查看具体子学科方向：</p>
+                <div id="programme-categories" class="space-y-4 max-w-4xl"></div>
+                <p class="text-xs text-slate-500 mt-6 max-w-4xl italic leading-relaxed border-t border-slate-200 pt-4">Application deadlines are indicative. Please check the universities&#39; official websites for the most accurate dates.</p>
+            </main>
+        </div>
+        <div id="page-match" class="page">
+            <main class="max-w-6xl mx-auto px-6 py-8">
+                <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight mb-8">AI Profile Match</h1>
+                <p class="text-xs text-slate-500 max-w-3xl mx-auto mb-4 leading-relaxed"><span class="font-semibold text-slate-600">Tier lists are incremental:</span> Top3 shows HKU, CUHK, HKUST only; Top5 adds CityU and PolyU only; 全港八大 adds HKBU, LingnanU, and EdUHK only. Match cards below spell this out for each tier.</p>
+                <div class="bg-white p-10 rounded-3xl shadow-xl max-w-3xl mx-auto border-t-8 border-purple-500">
+                    <form class="space-y-6" onsubmit="event.preventDefault(); handleMatch()">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">My University <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="Please enter your undergraduate university name" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 focus:bg-white focus:ring-2 focus:ring-purple-400" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Target Major <span class="text-red-500">*</span></label>
+                                <select class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 focus:bg-white focus:ring-2 focus:ring-purple-400" required>
+                                    <option value="">-- Select Major Category --</option>
+                                    <optgroup label="Business">
+                                        <option>Accounting</option>
+                                        <option>Finance</option>
+                                        <option>Marketing</option>
+                                        <option>Management</option>
+                                        <option>Economics</option>
+                                        <option>Business Analytics</option>
+                                        <option>Human Resource Management</option>
+                                    </optgroup>
+                                    <optgroup label="CS & Data Science">
+                                        <option>Computer Science</option>
+                                        <option>Artificial Intelligence</option>
+                                        <option>Data Science</option>
+                                        <option>Software Engineering</option>
+                                        <option>Information Systems</option>
+                                    </optgroup>
+                                    <optgroup label="Engineering">
+                                        <option>Electronic Engineering</option>
+                                        <option>Civil Engineering</option>
+                                        <option>Mechanical Engineering</option>
+                                        <option>Biomedical Engineering</option>
+                                        <option>Industrial Engineering</option>
+                                    </optgroup>
+                                    <optgroup label="Social Science">
+                                        <option>Psychology</option>
+                                        <option>Sociology</option>
+                                        <option>Public Policy</option>
+                                        <option>International Relations</option>
+                                        <option>Social Work</option>
+                                    </optgroup>
+                                    <optgroup label="Others">
+                                        <option>Journalism & Communication</option>
+                                        <option>TESOL</option>
+                                        <option>Education Leadership</option>
+                                        <option>Mathematics</option>
+                                        <option>Physics / Chemistry</option>
+                                        <option>Law</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">GPA (Out of 4.0) <span class="text-red-500">*</span></label>
+                                <input type="number" step="0.1" min="0" max="4.0" placeholder="e.g. 3.5" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 focus:bg-white focus:ring-2 focus:ring-purple-400" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Language Score <span class="text-red-500">*</span></label>
+                                <div class="flex space-x-6 mb-3">
+                                    <label class="flex items-center space-x-2 cursor-pointer">
+                                        <input type="radio" name="lang_type" value="ielts" checked onchange="toggleLangInput()" class="w-4 h-4 text-purple-600 focus:ring-purple-500">
+                                        <span class="text-sm font-medium">IELTS</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 cursor-pointer">
+                                        <input type="radio" name="lang_type" value="toefl" onchange="toggleLangInput()" class="w-4 h-4 text-purple-600 focus:ring-purple-500">
+                                        <span class="text-sm font-medium">TOEFL</span>
+                                    </label>
+                                </div>
+                                
+                                <div id="ielts_input_box" class="relative block">
+                                    <span class="absolute left-3 top-3.5 text-xs text-slate-400 font-bold">IELTS Score</span>
+                                    <input type="number" id="ielts_val" step="0.5" min="4.0" max="9.0" placeholder="6.5" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 pl-20 focus:bg-white focus:ring-2 focus:ring-purple-400">
+                                </div>
+                                
+                                <div id="toefl_input_box" class="relative hidden">
+                                    <span class="absolute left-3 top-3.5 text-xs text-slate-400 font-bold">TOEFL Score</span>
+                                    <input type="number" id="toefl_val" step="1" min="0" max="120" placeholder="100" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 pl-20 focus:bg-white focus:ring-2 focus:ring-purple-400">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Internship Experience</label>
+                                <textarea rows="4" placeholder="Briefly describe your relevant internship experience..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 focus:bg-white focus:ring-2 focus:ring-purple-400 resize-none"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Research Experience</label>
+                                <textarea rows="4" placeholder="Briefly describe your academic research experience..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 focus:bg-white focus:ring-2 focus:ring-purple-400 resize-none"></textarea>
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-lg py-4 rounded-xl hover:from-purple-700 hover:to-indigo-700 shadow-lg transform hover:-translate-y-1 transition-all">
+                                ⚡ Start AI Assessment
+                            </button>
+                        </div>
+                    </form>
+                    <div id="match-results" class="mt-8 space-y-4"></div>
+                </div>
+            </main>
+        </div>
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 9;
+        const slider = document.getElementById('slider-container');
+        const dots = document.querySelectorAll('.slide-dot');
+        let slideInterval;
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                if(index === currentSlide) {
+                    dot.classList.remove('opacity-50');
+                    dot.classList.add('opacity-100');
+                } else {
+                    dot.classList.add('opacity-50');
+                    dot.classList.remove('opacity-100');
+                }
+            });
+        }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 4000);
+        }
+        slider.parentElement.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slider.parentElement.addEventListener('mouseleave', startSlider);
+        startSlider();
+        function toggleLangInput() {
+            const isIelts = document.querySelector('input[name="lang_type"][value="ielts"]').checked;
+            const ieltsBox = document.getElementById('ielts_input_box');
+            const toeflBox = document.getElementById('toefl_input_box');
+            const ieltsInput = document.getElementById('ielts_val');
+            const toeflInput = document.getElementById('toefl_val');
+            if (isIelts) {
+                ieltsBox.classList.remove('hidden');
+                ieltsBox.classList.add('block');
+                toeflBox.classList.remove('block');
+                toeflBox.classList.add('hidden');
+                ieltsInput.required = true;
+                toeflInput.required = false;
+                toeflInput.value = ''; 
+            } else {
+                toeflBox.classList.remove('hidden');
+                toeflBox.classList.add('block');
+                ieltsBox.classList.remove('block');
+                ieltsBox.classList.add('hidden');
+                toeflInput.required = true;
+                ieltsInput.required = false;
+                ieltsInput.value = ''; 
+            }
+        }
+        document.addEventListener('DOMContentLoaded', toggleLangInput);
+        /** Escape text for safe insertion into HTML (text nodes and quoted attributes). */
+        function escapeHtml(value) {
+            if (value == null) return '';
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+        /** Same order as UI / backend PROGRAMME_CATEGORY_ORDER; unknown last ("Other"). */
+        const PROGRAMME_CATEGORY_ORDER = [
+            'Business',
+            'Engineering&Technology',
+            'Social Sciences',
+            'Humanities',
+            'Art',
+            'Medicine&Health',
+            'Education'
+        ];
+        function categorySortRank(cat) {
+            if (cat == null || String(cat).trim() === '') return PROGRAMME_CATEGORY_ORDER.length;
+            const i = PROGRAMME_CATEGORY_ORDER.indexOf(String(cat).trim());
+            return i === -1 ? PROGRAMME_CATEGORY_ORDER.length : i;
+        }
+        /** Preserve first-seen university order; within each uni sort by category rank, then uni, then programme. */
+        function sortProgrammesForDisplay(programmes) {
+            if (!Array.isArray(programmes) || programmes.length === 0) return programmes;
+            const uniSeq = [];
+            const seen = new Set();
+            for (const p of programmes) {
+                const u = p.University || '';
+                if (!seen.has(u)) { seen.add(u); uniSeq.push(u); }
+            }
+            const rankOf = Object.fromEntries(uniSeq.map((u, i) => [u, i]));
+            const fallback = uniSeq.length;
+            return [...programmes].sort((a, b) => {
+                const ua = a.University || '', ub = b.University || '';
+                const ra = rankOf[ua] !== undefined ? rankOf[ua] : fallback;
+                const rb = rankOf[ub] !== undefined ? rankOf[ub] : fallback;
+                if (ra !== rb) return ra - rb;
+                const c = categorySortRank(a.Category) - categorySortRank(b.Category);
+                if (c !== 0) return c;
+                const ucmp = ua.localeCompare(ub, undefined, { sensitivity: 'base' });
+                if (ucmp !== 0) return ucmp;
+                return (a.Programme || '').localeCompare(b.Programme || '', undefined, { sensitivity: 'base' });
+            });
+        }
+        /** Static HTML only (whitelist on tier label). No API text is concatenated into markup. */
+        function getTierIncrementalNoteHtml(tierLabel) {
+            switch (tierLabel) {
+                case '港大/港中文/港科大':
+                    return '<ul class="list-disc list-inside text-xs text-slate-500 mt-2 mb-1 space-y-1 leading-relaxed max-w-2xl">'
+                        + '<li><span class="font-semibold text-slate-600">Top3</span> — HKU, CUHK, HKUST.</li>'
+                        + '<li class="text-slate-400">Incremental: programme list includes <em>only</em> these three universities.</li>'
+                        + '</ul>';
+                case 'Top5+城大理工':
+                    return '<ul class="list-disc list-inside text-xs text-slate-500 mt-2 mb-1 space-y-1 leading-relaxed max-w-2xl">'
+                        + '<li><span class="font-semibold text-slate-600">Top5</span> = Top3 plus <span class="font-semibold text-slate-600">CityU</span> and <span class="font-semibold text-slate-600">PolyU</span>.</li>'
+                        + '<li class="text-slate-400">Incremental: <em>only these two</em> additional universities appear here (on top of Top3).</li>'
+                        + '</ul>';
+                case '全港八大':
+                    return '<ul class="list-disc list-inside text-xs text-slate-500 mt-2 mb-1 space-y-1 leading-relaxed max-w-2xl">'
+                        + '<li><span class="font-semibold text-slate-600">全港八大</span> = Top5 plus <span class="font-semibold text-slate-600">HKBU</span>, <span class="font-semibold text-slate-600">LingnanU</span>, and <span class="font-semibold text-slate-600">EdUHK</span>.</li>'
+                        + '<li class="text-slate-400">Incremental: <em>only these three</em> additional universities appear here (on top of Top5).</li>'
+                        + '</ul>';
+                default:
+                    return '';
+            }
+        }
+        /** Short native tooltip text (static per known tier). */
+        function getTierTooltipTitle(tierLabel) {
+            switch (tierLabel) {
+                case '港大/港中文/港科大':
+                    return 'Top3 = HKU, CUHK, HKUST (only these universities appear here)';
+                case 'Top5+城大理工':
+                    return 'Top5 = Top3 + CityU and PolyU (two additional universities only)';
+                case '全港八大':
+                    return 'All 8 = Top5 + HKBU, LingnanU, EdUHK (three additional universities only)';
+                default:
+                    return '';
+            }
+        }
+        /** Literal HTML snippet; apostrophe encoded for innerHTML safety. */
+        const APPLY_DATE_TABLE_FOOTNOTE_HTML = '<p class="text-xs text-slate-500 mt-3 pt-2 border-t border-slate-100 italic leading-relaxed">'
+            + 'Application deadlines are indicative. Please check the universities&#39; official websites for the most accurate dates.'
+            + '</p>';
+        const universities = [
+            { id: 'HKU', name: '香港大学<br><span class="text-sm text-slate-500 font-normal mt-1 block">(The University of Hong Kong)</span>', logo: 'https://aka.doubaocdn.com/s/c8wI1wNlJt' },
+            { id: 'CUHK', name: '香港中文大学<br><span class="text-sm text-slate-500 font-normal mt-1 block">(The Chinese University of Hong Kong)</span>', logo: 'https://aka.doubaocdn.com/s/7t2O1wNlK1' },
+            { id: 'HKUST', name: '香港科技大学<br><span class="text-sm text-slate-500 font-normal mt-1 block">(Hong Kong University of Science and Technology)</span>', logo: 'https://aka.doubaocdn.com/s/U5rp1wNlK7' },
+            { id: 'PolyU', name: '香港理工大学<br><span class="text-sm text-slate-500 font-normal mt-1 block">(The Hong Kong Polytechnic University)</span>', logo: 'https://aka.doubaocdn.com/s/9Z191wNlKK' },
+            { id: 'CityU', name: '香港城市大学<br><span class="text-sm text-slate-500 font-normal mt-1 block">(City University of Hong Kong)</span>', logo: 'https://aka.doubaocdn.com/s/wFzh1wNlKD' },
+            { id: 'HKBU', name: '香港浸会大学<br><span class="text-sm text-slate-500 font-normal mt-1 block">(Hong Kong Baptist University)</span>', logo: 'https://aka.doubaocdn.com/s/SV4W1wNlKQ' },
+            { id: 'LingnanU', name: '岭南大学<br><span class="text-sm text-slate-500 font-normal mt-1 block">(Lingnan University)</span>', logo: 'https://aka.doubaocdn.com/s/YL1D1wNlKW' },
+            { id: 'EdUHK', name: '香港教育大学<br><span class="text-sm text-slate-500 font-normal mt-1 block">(The Education University of Hong Kong)</span>', logo: 'https://aka.doubaocdn.com/s/sQ8B1wNlKc' }
+        ];
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('page-' + pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function viewUniversity(uniId) {
+            const uni = universities.find(u => u.id === uniId);
+            if(uni) {
+                document.getElementById('detail-logo').src = uni.logo;
+                document.getElementById('detail-logo').alt = uniId + " Logo";
+                document.getElementById('detail-name').innerHTML = uni.name;
+                
+                const tbody = document.getElementById('detail-programmes');
+                fetch("/api/programs?university=" + encodeURIComponent(uniId))
+                    .then(r => r.json())
+                    .then(data => {
+                        if (!Array.isArray(data)) return;
+                        const rows = sortProgrammesForDisplay(data);
+                        tbody.innerHTML = rows.map(p => `
+                            <tr class="hover:bg-indigo-50 transition-colors">
+                                <td class="py-4 px-6 border-b border-slate-100 font-bold text-slate-800">${escapeHtml(p.Programme)}</td>
+                                <td class="py-4 px-6 border-b border-slate-100"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-bold">${escapeHtml(p.Category)}</span></td>
+                                <td class="py-4 px-6 border-b border-slate-100 text-slate-600">${escapeHtml(p.Duration)}</td>
+                                <td class="py-4 px-6 border-b border-slate-100 text-slate-600">${escapeHtml(p.IELTS)}</td>
+                            </tr>
+                        `).join('');
+                        navigateTo('univ-detail');
+                    });
+            }
+        }
+        function initUniversities() {
+            const grid = document.getElementById('uni-grid');
+            grid.innerHTML = ''; 
+            universities.forEach(uni => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-3xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 transform cursor-pointer flex flex-col items-center text-center border border-slate-200 group";
+                card.onclick = () => viewUniversity(uni.id);
+                card.innerHTML = `
+                    <div class="h-28 w-28 mb-5 flex items-center justify-center p-3 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl group-hover:bg-gradient-to-br group-hover:from-indigo-50 group-hover:to-indigo-100 transition-colors">
+                        <img src="${escapeHtml(uni.logo)}" alt="${escapeHtml(uni.id)} Logo" class="max-h-full max-w-full object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <h3 class="font-bold text-slate-800 text-lg leading-tight mb-1">${uni.name}</h3>
+                `;
+                grid.appendChild(card);
+            });
+        }
+        function initProgrammeCategories() {
+            const container = document.getElementById('programme-categories');
+            fetch("/api/programs")
+                .then(r => r.json())
+                .then(data => {
+                    if (!Array.isArray(data)) return;
+                    const sorted = sortProgrammesForDisplay(data);
+                    const groups = {};
+                    sorted.forEach(p => {
+                        const key = (p.Category != null && String(p.Category).trim() !== '') ? p.Category : 'Other';
+                        if (!groups[key]) groups[key] = [];
+                        groups[key].push(p);
+                    });
+                    const categoryKeys = Object.keys(groups).sort((a, b) => categorySortRank(a) - categorySortRank(b));
+                    const colors = [
+                        { ring: 'ring-blue-400', bg: 'bg-blue-100', text: 'text-blue-600' },
+                        { ring: 'ring-indigo-400', bg: 'bg-indigo-100', text: 'text-indigo-600' },
+                        { ring: 'ring-emerald-400', bg: 'bg-emerald-100', text: 'text-emerald-600' },
+                        { ring: 'ring-pink-400', bg: 'bg-pink-100', text: 'text-pink-600' },
+                        { ring: 'ring-purple-400', bg: 'bg-purple-100', text: 'text-purple-600' },
+                        { ring: 'ring-amber-400', bg: 'bg-amber-100', text: 'text-amber-600' },
+                        { ring: 'ring-red-400', bg: 'bg-red-100', text: 'text-red-600' }
+                    ];
+                    const labels = {
+                        "Business": "Business (商科)",
+                        "Engineering&Technology": "Engineering & Technology (工程与技术)",
+                        "Social Sciences": "Social Sciences (社会科学)",
+                        "Humanities": "Humanities (人文)",
+                        "Art": "Art (艺术)",
+                        "Education": "Education (教育)",
+                        "Medicine&Health": "Medicine & Health (医药健康)",
+                        "Other": "Other (其他)"
+                    };
+                    let idx = 0;
+                    for (const cat of categoryKeys) {
+                        const progs = groups[cat];
+                        const c = colors[idx % colors.length];
+                        const label = labels[cat] || cat;
+                        idx++;
+                        const details = document.createElement('details');
+                        details.className = `group bg-white p-6 rounded-2xl shadow-sm border border-slate-100 open:ring-2 ${c.ring} transition-all cursor-pointer`;
+                        details.innerHTML = `
+                            <summary class="flex items-center justify-between font-bold text-lg text-slate-800">
+                                <div class="flex items-center"><div class="w-10 h-10 rounded-full ${c.bg} flex items-center justify-center ${c.text} mr-4 font-bold">${idx}</div> ${escapeHtml(label)}</div>
+                                <span class="text-slate-400 group-open:rotate-180 transition-transform duration-300">▼</span>
+                            </summary>
+                            <div class="mt-5 overflow-x-auto">
+                                <table class="w-full text-sm text-left">
+                                    <thead>
+                                        <tr class="text-slate-500 uppercase tracking-wider text-xs border-b border-slate-200">
+                                            <th class="py-3 px-4 font-semibold">Programme</th>
+                                            <th class="py-3 px-4 font-semibold">University</th>
+                                            <th class="py-3 px-4 font-semibold">Duration</th>
+                                            <th class="py-3 px-4 font-semibold">IELTS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                                        ${progs.map(p => `
+                                            <tr class="hover:bg-slate-50">
+                                                <td class="py-3 px-4 font-medium">${escapeHtml(p.Programme)}</td>
+                                                <td class="py-3 px-4">${escapeHtml(p.University)}</td>
+                                                <td class="py-3 px-4 text-slate-500">${escapeHtml(p.Duration)}</td>
+                                                <td class="py-3 px-4">${escapeHtml(p.IELTS)}</td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        `;
+                        container.appendChild(details);
+                    }
+                });
+        }
+        async function handleMatch() {
+            const form = document.querySelector('#page-match form');
+            const university = form.querySelector('input[type="text"]').value.trim();
+            const majorSelect = form.querySelector('select');
+            const gpa = form.querySelector('input[type="number"]').value;
+            const isIelts = document.querySelector('input[name="lang_type"][value="ielts"]').checked;
+            const score = isIelts ? document.getElementById('ielts_val').value : document.getElementById('toefl_val').value;
+            const selectedOpt = majorSelect.options[majorSelect.selectedIndex];
+            const optgroup = selectedOpt.closest('optgroup');
+            if (!university || !gpa || !score || !optgroup) return;
+            const majorTypeMap = { 'Business': 'business', 'CS & Data Science': 'stem', 'Engineering': 'stem', 'Social Science': 'social', 'Others': 'media' };
+            const major_type = majorTypeMap[optgroup.label] || 'business';
+            const container = document.getElementById('match-results');
+            container.innerHTML = '<div class="text-center text-slate-500 py-8">⏳ Analyzing...</div>';
+            try {
+                const exam_type = isIelts ? "IELTS" : "TOEFL";
+                const res = await fetch("/api/match", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        university,
+                        gpa: parseFloat(gpa),
+                        major_type,
+                        exam_type,
+                        score: parseFloat(score)
+                    })
+                });
+                let data;
+                try {
+                    const text = await res.text();
+                    data = text ? JSON.parse(text) : {};
+                } catch {
+                    container.innerHTML = `
+                        <div class="bg-white rounded-2xl p-6 shadow-md border border-red-200 border-l-4 border-l-red-500">
+                            <p class="text-sm font-semibold text-slate-800 mb-2">Invalid response</p>
+                            <p class="text-sm text-red-700">The server did not return valid JSON.</p>
+                            <p class="text-xs text-slate-500 mt-2">HTTP ${escapeHtml(String(res.status))}</p>
+                        </div>`;
+                    return;
+                }
+                if (!data || typeof data !== "object") {
+                    container.innerHTML = `
+                        <div class="bg-white rounded-2xl p-6 shadow-md border border-red-200 border-l-4 border-l-red-500">
+                            <p class="text-sm text-red-700">${escapeHtml("Unexpected empty response.")}</p>
+                        </div>`;
+                    return;
+                }
+                if (data.error != null && String(data.error).trim() !== "") {
+                    const msg = typeof data.error === "string" ? data.error : String(data.error);
+                    const statusLine = !res.ok
+                        ? `<p class="text-xs text-slate-500 mt-3">HTTP ${escapeHtml(String(res.status))}</p>`
+                        : "";
+                    container.innerHTML = `
+                        <div class="bg-white rounded-2xl p-6 shadow-md border border-red-200 border-l-4 border-l-red-500">
+                            <p class="text-sm font-semibold text-slate-800 mb-2">Match could not be completed</p>
+                            <p class="text-sm text-red-700 leading-relaxed">${escapeHtml(msg)}</p>
+                            ${statusLine}
+                        </div>`;
+                    return;
+                }
+                if (!res.ok) {
+                    container.innerHTML = `
+                        <div class="bg-white rounded-2xl p-6 shadow-md border border-red-200 border-l-4 border-l-red-500">
+                            <p class="text-sm font-semibold text-slate-800 mb-2">Request failed</p>
+                            <p class="text-sm text-red-700">${escapeHtml("HTTP " + String(res.status))}</p>
+                        </div>`;
+                    return;
+                }
+                if (!Array.isArray(data["推荐列表"])) {
+                    container.innerHTML = `
+                        <div class="bg-white rounded-2xl p-6 shadow-md border border-red-200 border-l-4 border-l-red-500">
+                            <p class="text-sm font-semibold text-slate-800 mb-2">Unexpected response</p>
+                            <p class="text-sm text-red-700">${escapeHtml("The server response did not include a recommendation list.")}</p>
+                        </div>`;
+                    return;
+                }
+                const uniShortMap = {
+                    "The University of Hong Kong": "HKU",
+                    "The Chinese University of Hong Kong": "CUHK",
+                    "The Hong Kong University of Science and Technology": "HKUST",
+                    "The Hong Kong Polytechnic University": "PolyU",
+                    "City University of Hong Kong": "CityU",
+                    "Hong Kong Baptist University": "HKBU",
+                    "Lingnan University": "LingnanU",
+                    "The Education University of Hong Kong": "EdUHK"
+                };
+                data["推荐列表"].forEach(item => {
+                    if (Array.isArray(item.programmes)) {
+                        item.programmes = sortProgrammesForDisplay(item.programmes);
+                    }
+                });
+                container.innerHTML = data["推荐列表"].map((item, ci) => {
+                    const hasProgrammes = item.programmes && item.programmes.length;
+                    const total = item.programmes ? item.programmes.length : 0;
+                    const limit = 5;
+                    const hotStatus = item["热门专业"]["状态"];
+                    const coldStatus = item["冷门保底"]["状态"];
+                    const hotBadgeClass = hotStatus.includes("强竞争力") ? 'bg-emerald-50 text-emerald-700' : hotStatus.includes("有风险") ? 'bg-amber-50 text-amber-700' : 'bg-red-50 text-red-700';
+                    const coldBadgeClass = coldStatus.includes("强竞争力") ? 'bg-emerald-50 text-emerald-700' : coldStatus.includes("有风险") ? 'bg-amber-50 text-amber-700' : 'bg-red-50 text-red-700';
+                    const tierTitle = escapeHtml(item["港校梯队"]);
+                    const tierTipAttr = escapeHtml(getTierTooltipTitle(item["港校梯队"]));
+                    return `
+                    <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200">
+                        <div class="mb-3">
+                            <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                                <span class="font-bold text-lg text-slate-800">${tierTitle}</span>
+                                <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-300 text-[10px] font-bold text-slate-500 bg-slate-50 cursor-help" title="${tierTipAttr}">i</span>
+                            </div>
+                            ${getTierIncrementalNoteHtml(item["港校梯队"])}
+                        </div>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-sm font-semibold text-slate-600">🔥 热门专业</span>
+                            <span class="text-sm px-3 py-1 rounded-full font-medium ${hotBadgeClass}">${escapeHtml(hotStatus)}</span>
+                        </div>
+                        <div class="text-sm text-slate-500 mb-1">${escapeHtml(item["热门专业"]["说明"])}</div>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            ${item["热门专业"]["专业"].map(m => `<span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-full">${escapeHtml(m)}</span>`).join('')}
+                        </div>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-sm font-semibold text-slate-600">❄️ 冷门保底</span>
+                            <span class="text-sm px-3 py-1 rounded-full font-medium ${coldBadgeClass}">${escapeHtml(coldStatus)}</span>
+                        </div>
+                        <div class="text-sm text-slate-500 mb-1">${escapeHtml(item["冷门保底"]["说明"])}</div>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            ${item["冷门保底"]["专业"].map(m => `<span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-full">${escapeHtml(m)}</span>`).join('')}
+                        </div>
+                        ${hasProgrammes ? `
+                        <div class="overflow-x-auto rounded-lg border border-slate-200">
+                            <table class="w-full text-sm text-left">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
+                                        <th class="py-2.5 px-3 font-semibold">Programme</th>
+                                        <th class="py-2.5 px-3 font-semibold">University</th>
+                                        <th class="py-2.5 px-3 font-semibold">IELTS</th>
+                                        <th class="py-2.5 px-3 font-semibold">Duration</th>
+                                        <th class="py-2.5 px-3 font-semibold">Apply Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 text-slate-600 prog-tbody-${ci}">
+                                    ${item.programmes.map((p, ri) => `
+                                        <tr class="hover:bg-slate-50 ${ri >= limit ? 'prog-hidden-' + ci + ' hidden' : ''}">
+                                            <td class="py-2 px-3">${escapeHtml(p.Programme)}</td>
+                                            <td class="py-2 px-3">${escapeHtml(uniShortMap[p.University] || p.University)}</td>
+                                            <td class="py-2 px-3">${escapeHtml(p.IELTS)}</td>
+                                            <td class="py-2 px-3">${escapeHtml(p.Duration)}</td>
+                                            <td class="py-2 px-3">${escapeHtml(p["Apply date"])}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                            ${APPLY_DATE_TABLE_FOOTNOTE_HTML}
+                            ${total > limit ? `<button onclick="document.querySelectorAll('.prog-hidden-${ci}').forEach(r => r.classList.toggle('hidden')); this.textContent = this.textContent === '显示更多' ? '收起' : '显示更多'" class="mt-2 text-sm text-purple-600 hover:text-purple-800 font-medium">显示更多</button>` : ''}
+                        </div>` : ''}
+                    </div>`;
+                }).join('');
+            } catch {
+                container.innerHTML = '<div class="text-center text-red-500 py-8">❌ Request failed</div>';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            initUniversities();
+            initProgrammeCategories();
+        });
+    </script>
+</body>
+</html>
