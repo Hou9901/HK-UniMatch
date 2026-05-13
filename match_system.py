@@ -1,8 +1,8 @@
 # ==========================================================
-# Hong Kong Master Match System (Optimized for Real Admissions)
+# Hong Kong Master Match System
 # All Majors Optimized: Business / STEM / Media / Arts / Social
 # Real HK University Admission Standards + Priority Recommendation
-# Optimized Version: Auto-tiering + Granular GPA/IELTS + Priority for Hot Majors
+# 优化版：自动评级 + 细化GPA/语言 + 热门专业优先推荐
 # ==========================================================
 
 # ======================= GLOBAL UNIVERSITY TIERS =======================
@@ -81,89 +81,80 @@ UNIVERSITY_TIERS = {
     ]
 }
 
-# ======================= SPECIAL SCHOOLS (Field-Specific Excellence) =======================
+# ======================= SPECIAL SCHOOLS =======================
 BUSINESS_SPECIAL = ["东北财经大学", "江西财经大学", "浙江工商大学", "南京财经大学", "南京审计大学", "山东财经大学", "天津财经大学", "首都经济贸易大学", "上海对外经贸大学"]
 STEM_SPECIAL = ["杭州电子科技大学", "南京邮电大学", "重庆邮电大学", "浙江工业大学", "广东工业大学", "江苏大学", "深圳大学", "天津工业大学", "成都理工大学", "上海理工大学", "南京工业大学", "西安邮电大学"]
 MEDIA_SPECIAL = ["浙江传媒学院", "四川传媒学院", "南京传媒学院", "武汉传媒学院", "北京电影学院", "上海视觉艺术学院"]
 ARTS_SPECIAL = ["四川外国语大学", "西安外国语大学", "广东外语外贸大学", "天津外国语大学", "外交学院", "北京语言大学", "首都师范大学", "山东师范大学", "福建师范大学"]
 SOCIAL_SPECIAL = ["西北政法大学", "西南政法大学", "华东政法大学", "上海政法学院", "山东政法学院", "中国青年政治学院", "中国社会科学院大学"]
-# ======================= 1. Business  =======================
-# - GPA scaled to 4.0 (real HK unis prioritize 3.0+/4.0 as baseline for top programs)
-# - IELTS: Hot majors require 7.0+ (real cutoff for HKU/CUHK Business), cold majors 6.0+ (minimum for admission)
-# - Tier-based competitiveness (T3 unis need higher GPA/IELTS to compensate for school ranking)
+MEDICINE_SPECIAL = []
+# ======================= 1. 商科 (Business) - 已优化 细化分数 =======================
+# 优化：严格区分 录取线 / 竞争力线，推荐更精准
 BUSINESS_MAJORS = {
-    "hot": ["Master of Finance", "Master of Accounting", "Business Analytics", "FinTech", "Marketing", "International Business"],
-    "cold": ["Supply Chain Management", "Human Resource Management", "Operations Management", "Tourism and Hospitality Management", "Public Finance", "Entrepreneurship Management"]
+    "hot": ["金融硕士", "会计硕士", "商业分析", "金融科技", "市场营销", "国际商务"],
+    "cold": ["供应链管理", "人力资源管理", "运营管理", "旅游与酒店管理", "公共财务", "创业管理"]
 }
 BUSINESS_RULES = {
-    "T0": {"hot": {"Top3": [3.5, 3.8, 7.0, 7.5], "Top5": [3.2, 3.5, 6.5, 7.0], "All8": [3.0, 3.3, 6.0, 6.5]},
-          "cold": {"Top3": [3.3, 3.6, 6.5, 7.0], "Top5": [3.0, 3.3, 6.0, 6.5], "All8": [2.8, 3.1, 6.0, 6.0]}},
-    "T1": {"hot": {"Top3": [3.6, 3.9, 7.0, 7.5], "Top5": [3.3, 3.6, 6.5, 7.0], "All8": [3.1, 3.4, 6.0, 6.5]},
-          "cold": {"Top3": [3.4, 3.7, 6.5, 7.0], "Top5": [3.1, 3.4, 6.0, 6.5], "All8": [2.9, 3.2, 6.0, 6.0]}},
-    "T2": {"hot": {"Top3": [3.7, 4.0, 7.0, 7.5], "Top5": [3.4, 3.7, 6.5, 7.0], "All8": [3.2, 3.5, 6.5, 7.0]},
-          "cold": {"Top3": [3.5, 3.8, 6.5, 7.0], "Top5": [3.2, 3.5, 6.0, 6.5], "All8": [3.0, 3.3, 6.0, 6.5]}},
-    "T3": {"hot": {"Top3": [3.8, 4.0, 7.0, 7.5], "Top5": [3.6, 3.9, 7.0, 7.5], "All8": [3.4, 3.7, 6.5, 7.0]},
-          "cold": {"Top3": [3.6, 3.9, 7.0, 7.0], "Top5": [3.4, 3.6, 6.5, 7.0], "All8": [3.2, 3.5, 6.0, 6.5]}}
+    "T0": {"hot": {"Top3": [3.4, 3.8, 6.5, 7.5], "Top5": [3.0, 3.4, 6.5, 7.0], "All8": [2.7, 3.1, 6.0, 6.5]},
+          "cold": {"Top3": [3.2, 3.5, 6.5, 7.0], "Top5": [2.8, 3.1, 6.0, 6.5], "All8": [2.5, 2.8, 6.0, 6.0]}},
+    "T1": {"hot": {"Top3": [3.5, 3.9, 6.5, 7.5], "Top5": [3.2, 3.6, 6.5, 7.0], "All8": [2.9, 3.3, 6.0, 6.5]},
+          "cold": {"Top3": [3.3, 3.6, 6.5, 7.0], "Top5": [3.0, 3.3, 6.0, 6.5], "All8": [2.7, 3.0, 6.0, 6.0]}},
+    "T2": {"hot": {"Top3": [3.6, 4.0, 7.0, 7.5], "Top5": [3.3, 3.7, 6.5, 7.0], "All8": [3.1, 3.5, 6.5, 7.0]},
+          "cold": {"Top3": [3.4, 3.7, 6.5, 7.0], "Top5": [3.1, 3.4, 6.5, 6.5], "All8": [2.9, 3.2, 6.0, 6.5]}},
+    "T3": {"hot": {"Top3": [3.7, 4.0, 7.0, 7.5], "Top5": [3.5, 3.8, 7.0, 7.5], "All8": [3.3, 3.6, 6.5, 7.0]},
+          "cold": {"Top3": [3.5, 3.8, 7.0, 7.0], "Top5": [3.3, 3.5, 6.5, 7.0], "All8": [3.1, 3.3, 6.0, 6.5]}}
 }
 
-# ======================= 2. STEM  =======================
-# - Lower baseline GPA (STEM values technical skills over pure GPA), but higher IELTS for research-focused hot majors
-# - AI/CS require 6.5+ IELTS (real HKUST/CityU cutoff), engineering majors 6.0+
+# ======================= 2. 理工科 (STEM) =======================
 STEM_MAJORS = {
-    "hot": ["Computer Science", "Data Science", "Artificial Intelligence", "Electronic and Information Engineering", "Information Technology", "Software Engineering"],
-    "cold": ["Civil Engineering", "Environmental Science", "Materials Engineering", "Mechanical Engineering", "Maritime Engineering", "Industrial Engineering"]
+    "hot": ["计算机科学", "数据科学", "人工智能", "电子信息工程", "信息技术", "软件工程"],
+    "cold": ["土木工程", "环境科学", "材料工程", "机械工程", "海事工程", "工业工程"]
 }
 STEM_RULES = {
-    "T0": {"hot": {"Top3": [3.1, 3.5, 6.5, 7.0], "Top5": [2.8, 3.2, 6.0, 6.5], "All8": [2.6, 3.0, 6.0, 6.0]}, "cold": {"Top3": [3.0, 3.3, 6.0, 6.5], "Top5": [2.7, 3.0, 6.0, 6.0], "All8": [2.5, 2.8, 6.0, 6.0]}},
-    "T1": {"hot": {"Top3": [3.3, 3.7, 6.5, 7.0], "Top5": [3.0, 3.4, 6.0, 6.5], "All8": [2.8, 3.1, 6.0, 6.0]}, "cold": {"Top3": [3.1, 3.4, 6.0, 6.5], "Top5": [2.8, 3.1, 6.0, 6.0], "All8": [2.6, 2.9, 6.0, 6.0]}},
-    "T2": {"hot": {"Top3": [3.5, 3.9, 6.5, 7.0], "Top5": [3.2, 3.6, 6.0, 6.5], "All8": [3.0, 3.3, 6.0, 6.5]}, "cold": {"Top3": [3.3, 3.6, 6.0, 6.5], "Top5": [3.0, 3.3, 6.0, 6.0], "All8": [2.8, 3.1, 6.0, 6.0]}},
-    "T3": {"hot": {"Top3": [3.7, 4.0, 7.0, 7.5], "Top5": [3.5, 3.8, 6.5, 7.0], "All8": [3.3, 3.6, 6.0, 6.5]}, "cold": {"Top3": [3.5, 3.8, 6.0, 6.5], "Top5": [3.3, 3.5, 6.0, 6.5], "All8": [3.1, 3.4, 6.0, 6.0]}}
+    "T0": {"hot": {"Top3": [3.0,3.4,6.0,6.5], "Top5": [2.7,3.1,6.0,6.0], "All8": [2.5,2.8,6.0,6.0]}, "cold": {"Top3": [2.9,3.2,6.0,6.0], "Top5": [2.6,2.9,6.0,6.0], "All8": [2.4,2.6,6.0,6.0]}},
+    "T1": {"hot": {"Top3": [3.2,3.6,6.0,6.5], "Top5": [2.9,3.3,6.0,6.0], "All8": [2.7,3.0,6.0,6.0]}, "cold": {"Top3": [3.0,3.3,6.0,6.0], "Top5": [2.7,3.0,6.0,6.0], "All8": [2.5,2.8,6.0,6.0]}},
+    "T2": {"hot": {"Top3": [3.4,3.8,6.5,7.0], "Top5": [3.1,3.5,6.0,6.5], "All8": [2.9,3.2,6.0,6.0]}, "cold": {"Top3": [3.2,3.5,6.0,6.5], "Top5": [2.9,3.2,6.0,6.0], "All8": [2.7,3.0,6.0,6.0]}},
+    "T3": {"hot": {"Top3": [3.6,4.0,6.5,7.0], "Top5": [3.4,3.7,6.5,6.5], "All8": [3.2,3.5,6.0,6.5]}, "cold": {"Top3": [3.4,3.7,6.0,6.5], "Top5": [3.2,3.4,6.0,6.5], "All8": [3.0,3.2,6.0,6.0]}}
 }
 
-# ======================= 3. Media =======================
-# - Higher IELTS (media requires strong English: 7.0+ for hot majors like International Journalism)
-# - GPA: Slightly higher for T3 unis (compensate for school ranking)
+# ======================= 3. 传媒 (Media) =======================
 MEDIA_MAJORS = {
-    "hot": ["Journalism", "Communications", "New Media", "International Journalism", "Media Management", "Digital Media"],
-    "cold": ["Film Production", "Creative Media", "Advertising Design", "Cultural and Creative Industries", "Media Education", "Visual Communication"]
+    "hot": ["新闻学", "传播学", "新媒体", "国际新闻", "媒体管理", "数字媒体"],
+    "cold": ["影视制作", "创意媒体", "广告设计", "文化创意产业", "媒体教育", "视觉传播"]
 }
 MEDIA_RULES = {
-    "T0": {"hot": {"Top3": [3.3, 3.7, 7.0, 7.5], "Top5": [3.0, 3.4, 6.5, 7.0], "All8": [2.8, 3.1, 6.5, 6.5]}, "cold": {"Top3": [3.1, 3.5, 6.5, 7.0], "Top5": [2.8, 3.2, 6.5, 6.5], "All8": [2.6, 2.9, 6.0, 6.5]}},
-    "T1": {"hot": {"Top3": [3.5, 3.8, 7.0, 7.5], "Top5": [3.2, 3.5, 6.5, 7.0], "All8": [3.0, 3.3, 6.5, 6.5]}, "cold": {"Top3": [3.3, 3.6, 6.5, 7.0], "Top5": [3.0, 3.3, 6.5, 6.5], "All8": [2.8, 3.1, 6.0, 6.5]}},
-    "T2": {"hot": {"Top3": [3.7, 4.0, 7.0, 7.5], "Top5": [3.4, 3.8, 7.0, 7.5], "All8": [3.2, 3.5, 6.5, 7.0]}, "cold": {"Top3": [3.5, 3.8, 6.5, 7.0], "Top5": [3.2, 3.5, 6.5, 6.5], "All8": [3.0, 3.3, 6.0, 6.5]}},
-    "T3": {"hot": {"Top3": [3.8, 4.0, 7.5, 8.0], "Top5": [3.6, 3.9, 7.0, 7.5], "All8": [3.4, 3.7, 6.5, 7.0]}, "cold": {"Top3": [3.6, 3.9, 7.0, 7.5], "Top5": [3.3, 3.6, 6.5, 7.0], "All8": [3.1, 3.4, 6.0, 6.5]}}
+    "T0": {"hot": {"Top3": [3.2,3.6,6.5,7.0], "Top5": [2.9,3.3,6.5,6.5], "All8": [2.7,3.0,6.5,6.5]}, "cold": {"Top3": [3.0,3.4,6.5,6.5], "Top5": [2.7,3.1,6.5,6.5], "All8": [2.5,2.8,6.0,6.0]}},
+    "T1": {"hot": {"Top3": [3.4,3.8,6.5,7.0], "Top5": [3.1,3.5,6.5,7.0], "All8": [2.9,3.2,6.5,6.5]}, "cold": {"Top3": [3.2,3.5,6.5,6.5], "Top5": [2.9,3.2,6.5,6.5], "All8": [2.7,3.0,6.0,6.0]}},
+    "T2": {"hot": {"Top3": [3.6,4.0,7.0,7.5], "Top5": [3.3,3.7,6.5,7.0], "All8": [3.1,3.4,6.5,6.5]}, "cold": {"Top3": [3.4,3.7,6.5,7.0], "Top5": [3.1,3.4,6.5,6.5], "All8": [2.9,3.2,6.0,6.0]}},
+    "T3": {"hot": {"Top3": [3.8,4.0,7.0,7.5], "Top5": [3.6,3.9,6.5,7.0], "All8": [3.4,3.7,6.5,7.0]}, "cold": {"Top3": [3.6,3.8,6.5,7.0], "Top5": [3.3,3.6,6.5,6.5], "All8": [3.1,3.4,6.0,6.5]}}
 }
 
-# ======================= 4. Arts =======================
-# - IELTS critical (translation/TEFL require 7.0+ for top programs, 6.5+ minimum)
-# - GPA: More lenient for T0/T1 (language proficiency outweighs GPA)
+# ======================= 4. 文科 (Arts) =======================
 ARTS_MAJORS = {
-    "hot": ["Master of Translation and Interpreting", "English Language Education", "Teaching English to Speakers of Other Languages (TESOL)", "International English Education", "Linguistics", "Cross-Cultural Communication"],
-    "cold": ["Chinese Language and Literature", "Cultural Studies", "Historical Studies", "Philosophical Studies", "Art History", "Comparative Literature"]
+    "hot": ["翻译硕士", "英语教育", "对外英语教学", "国际英语教育", "语言研究", "跨文化交流"],
+    "cold": ["中国语言文学", "文化研究", "历史研究", "哲学研究", "艺术史", "比较文学"]
 }
 ARTS_RULES = {
-    "T0": {"hot": {"Top3": [3.2, 3.6, 7.0, 7.5], "Top5": [2.9, 3.3, 6.5, 7.0], "All8": [2.7, 3.0, 6.5, 6.5]}, "cold": {"Top3": [3.0, 3.4, 6.5, 7.0], "Top5": [2.7, 3.1, 6.5, 6.5], "All8": [2.5, 2.8, 6.0, 6.5]}},
-    "T1": {"hot": {"Top3": [3.4, 3.7, 7.0, 7.5], "Top5": [3.1, 3.4, 6.5, 7.0], "All8": [2.9, 3.2, 6.5, 6.5]}, "cold": {"Top3": [3.2, 3.5, 6.5, 7.0], "Top5": [2.9, 3.2, 6.5, 6.5], "All8": [2.7, 3.0, 6.0, 6.5]}},
-    "T2": {"hot": {"Top3": [3.6, 3.9, 7.0, 7.5], "Top5": [3.3, 3.7, 7.0, 7.5], "All8": [3.1, 3.4, 6.5, 7.0]}, "cold": {"Top3": [3.4, 3.7, 6.5, 7.0], "Top5": [3.1, 3.4, 6.5, 6.5], "All8": [2.9, 3.2, 6.0, 6.5]}},
-    "T3": {"hot": {"Top3": [3.7, 4.0, 7.5, 8.0], "Top5": [3.5, 3.8, 7.0, 7.5], "All8": [3.3, 3.6, 6.5, 7.0]}, "cold": {"Top3": [3.5, 3.8, 6.5, 7.0], "Top5": [3.2, 3.5, 6.5, 6.5], "All8": [3.0, 3.3, 6.0, 6.5]}}
+    "T0": {"hot": {"Top3": [3.2,3.6,6.5,7.0], "Top5": [2.9,3.3,6.5,7.0], "All8": [2.7,3.0,6.5,6.5]}, "cold": {"Top3": [3.0,3.4,6.5,6.5], "Top5": [2.7,3.1,6.5,6.5], "All8": [2.5,2.8,6.0,6.0]}},
+    "T1": {"hot": {"Top3": [3.4,3.8,6.5,7.0], "Top5": [3.1,3.5,6.5,7.0], "All8": [2.9,3.2,6.5,6.5]}, "cold": {"Top3": [3.2,3.5,6.5,6.5], "Top5": [2.9,3.2,6.5,6.5], "All8": [2.7,3.0,6.0,6.0]}},
+    "T2": {"hot": {"Top3": [3.6,4.0,7.0,7.5], "Top5": [3.3,3.7,6.5,7.0], "All8": [3.1,3.4,6.5,7.0]}, "cold": {"Top3": [3.4,3.7,6.5,7.0], "Top5": [3.1,3.4,6.5,6.5], "All8": [2.9,3.2,6.0,6.5]}},
+    "T3": {"hot": {"Top3": [3.8,4.0,7.0,7.5], "Top5": [3.6,3.9,6.5,7.0], "All8": [3.4,3.7,6.5,7.0]}, "cold": {"Top3": [3.6,3.8,6.5,7.0], "Top5": [3.3,3.6,6.5,6.5], "All8": [3.1,3.4,6.0,6.5]}}
 }
 
-# ======================= 5. Social Science =======================
-# - IELTS: 7.0+ for hot majors (IR/Public Policy at HKU/CUHK requires 7.0), 6.0+ for cold
-# - GPA: T3 unis need 3.4+ for All8 (compensate for school ranking)
+# ======================= 5. 社科 (Social Science) =======================
 SOCIAL_MAJORS = {
-    "hot": ["Public Policy", "Social Management", "International Relations", "Urban Management", "Public Administration", "Development Studies"],
-    "cold": ["Social Work", "Sociology", "Anthropology", "Social Policy", "Gerontology", "Community Services"]
+    "hot": ["公共政策", "社会管理", "国际关系", "城市管理", "公共行政", "发展研究"],
+    "cold": ["社会工作", "社会学", "人类学", "社会政策", "老年学", "社区服务"]
 }
 SOCIAL_RULES = {
-    "T0": {"hot": {"Top3": [3.3, 3.7, 7.0, 7.5], "Top5": [3.0, 3.4, 6.5, 7.0], "All8": [2.8, 3.1, 6.5, 6.5]}, "cold": {"Top3": [3.1, 3.5, 6.5, 7.0], "Top5": [2.8, 3.2, 6.5, 6.5], "All8": [2.6, 2.9, 6.0, 6.5]}},
-    "T1": {"hot": {"Top3": [3.5, 3.8, 7.0, 7.5], "Top5": [3.2, 3.5, 6.5, 7.0], "All8": [3.0, 3.3, 6.5, 6.5]}, "cold": {"Top3": [3.3, 3.6, 6.5, 7.0], "Top5": [3.0, 3.3, 6.5, 6.5], "All8": [2.8, 3.1, 6.0, 6.5]}},
-    "T2": {"hot": {"Top3": [3.7, 4.0, 7.0, 7.5], "Top5": [3.4, 3.8, 7.0, 7.5], "All8": [3.2, 3.5, 6.5, 7.0]}, "cold": {"Top3": [3.5, 3.8, 6.5, 7.0], "Top5": [3.2, 3.5, 6.5, 6.5], "All8": [3.0, 3.3, 6.0, 6.5]}},
-    "T3": {"hot": {"Top3": [3.8, 4.0, 7.5, 8.0], "Top5": [3.6, 3.9, 7.0, 7.5], "All8": [3.4, 3.7, 6.5, 7.0]}, "cold": {"Top3": [3.6, 3.9, 7.0, 7.5], "Top5": [3.3, 3.6, 6.5, 7.0], "All8": [3.1, 3.4, 6.0, 6.5]}}
+    "T0": {"hot": {"Top3": [3.2,3.6,6.5,7.0], "Top5": [2.9,3.3,6.5,6.5], "All8": [2.7,3.0,6.5,6.5]}, "cold": {"Top3": [3.0,3.4,6.5,6.5], "Top5": [2.7,3.1,6.5,6.5], "All8": [2.5,2.8,6.0,6.0]}},
+    "T1": {"hot": {"Top3": [3.4,3.8,6.5,7.0], "Top5": [3.1,3.5,6.5,7.0], "All8": [2.9,3.2,6.5,6.5]}, "cold": {"Top3": [3.2,3.5,6.5,6.5], "Top5": [2.9,3.2,6.5,6.5], "All8": [2.7,3.0,6.0,6.0]}},
+    "T2": {"hot": {"Top3": [3.6,4.0,7.0,7.5], "Top5": [3.3,3.7,6.5,7.0], "All8": [3.1,3.4,6.5,6.5]}, "cold": {"Top3": [3.4,3.7,6.5,7.0], "Top5": [3.1,3.4,6.5,6.5], "All8": [2.9,3.2,6.0,6.0]}},
+    "T3": {"hot": {"Top3": [3.8,4.0,7.0,7.5], "Top5": [3.6,3.9,6.5,7.0], "All8": [3.4,3.7,6.5,7.0]}, "cold": {"Top3": [3.6,3.8,6.5,7.0], "Top5": [3.3,3.6,6.5,6.5], "All8": [3.1,3.4,6.0,6.5]}}
 }
 
-# ======================= Core Configuration =======================
-HK_GROUPS = {"Top3": "HKU / CUHK / HKUST", "Top5": "Top3 + CityU / PolyU", "All8": "All 8 HKU Grants Committee Universities"}
+# ======================= 核心配置 =======================
+HK_GROUPS = {"Top3": "港大/港中文/港科大", "Top5": "Top5+城大理工", "All8": "全港八大"}
 MAJOR_CONFIG = {
     "business": {"special": BUSINESS_SPECIAL, "majors": BUSINESS_MAJORS, "rules": BUSINESS_RULES},
     "stem": {"special": STEM_SPECIAL, "majors": STEM_MAJORS, "rules": STEM_RULES},
@@ -172,14 +163,14 @@ MAJOR_CONFIG = {
     "social": {"special": SOCIAL_SPECIAL, "majors": SOCIAL_MAJORS, "rules": SOCIAL_RULES}
 }
 
-# ======================= Valid University Set =======================
+# ======================= 有效院校集合 =======================
 ALL_UNIVERSITIES = set()
 for _schools in UNIVERSITY_TIERS.values():
     ALL_UNIVERSITIES.update(_schools)
 for _cfg in MAJOR_CONFIG.values():
     ALL_UNIVERSITIES.update(_cfg["special"])
 
-# ======================= Core Function: Auto Tiering =======================
+# ======================= 核心函数 自动评级 =======================
 def get_tier(uni_name, major_type):
     for t, schools in UNIVERSITY_TIERS.items():
         if uni_name in schools:
@@ -188,24 +179,24 @@ def get_tier(uni_name, major_type):
         return "T2"
     return "T3"
 
-# ======================= Core Function: Granular Evaluation =======================
+# ======================= 优化：细化评分 =======================
 def evaluate(gpa, ielts, req):
     base_gpa, comp_gpa, base_ielts, comp_ielts = req
 
-    # Fully below minimum requirements
+    # 完全不达标
     if gpa < base_gpa or ielts < base_ielts:
-        return "❌ Not Eligible", f"Minimum Requirements: GPA≥{base_gpa}, IELTS≥{base_ielts}"
+        return "❌ 未达标", f"最低要求：GPA≥{base_gpa} 雅思≥{base_ielts}"
 
-    # Strong competitiveness (meet top-tier standards)
+    # 超强竞争力
     if gpa >= comp_gpa and ielts >= comp_ielts:
-        return "✅ Strong Competitiveness", f"Competitive: GPA≥{comp_gpa}, IELTS≥{comp_ielts}"
+        return "✅ 强竞争力", f"达标：GPA≥{comp_gpa} 雅思≥{comp_ielts}"
 
-    # Marginal risk (meet minimum but not competitive)
-    return "⚠️ At Risk", f"Recommended Improvement: GPA≥{comp_gpa}, IELTS≥{comp_ielts}"
+    # 边缘/低竞争力
+    return "⚠️ 有风险", f"建议提升：GPA≥{comp_gpa} 雅思≥{comp_ielts}"
 
-# ======================= Core Function: Priority Recommendation for Hot Majors =======================
+# ======================= 核心优化：热门专业优先推荐 =======================
 def recommend(uni_name, gpa, ielts, major_type):
-    # Auto-determine university tier
+    # 自动判定等级
     tier = get_tier(uni_name, major_type)
     cfg = MAJOR_CONFIG[major_type]
     hot_majors = cfg["majors"]["hot"]
@@ -213,33 +204,55 @@ def recommend(uni_name, gpa, ielts, major_type):
     rules = cfg["rules"][tier]
 
     output = {
-        "Undergraduate University": uni_name,
-        "Auto-Assigned Tier": tier,
-        "Major Category": major_type,
-        "GPA (4.0 Scale)": gpa,
-        "IELTS Score": ielts,
-        "Recommendation List": []
+        "本科院校": uni_name,
+        "自动判定等级": tier,
+        "专业方向": major_type,
+        "GPA": gpa,
+        "雅思": ielts,
+        "推荐列表": []
     }
 
     for gk, group_name in HK_GROUPS.items():
         hot_status, hot_desc = evaluate(gpa, ielts, rules["hot"][gk])
         cold_status, cold_desc = evaluate(gpa, ielts, rules["cold"][gk])
-        # Only include if both hot/cold majors meet minimum requirements (avoid misleading recommendations)
-        hot_eligible = "❌" not in hot_status
-        cold_eligible = "❌" not in cold_status
-        if hot_eligible and cold_eligible:
-            output["Recommendation List"].append({
-                "HK University Group": group_name,
-                "Hot Majors": {
-                    "Majors": hot_majors,
-                    "Status": hot_status,
-                    "Details": hot_desc
+        # Require both tracks to meet at least the minimum GPA/IELTS bar for this tier.
+        # If we only required cold ("保底"), a tier could appear while hot majors were still
+        # "❌ 未达标", which reads like the whole tier (including 热门) is reachable.
+        hot_ok = "❌" not in hot_status
+        cold_ok = "❌" not in cold_status
+        if hot_ok and cold_ok:
+            output["推荐列表"].append({
+                "港校梯队": group_name,
+                "热门专业": {
+                    "专业": hot_majors,
+                    "状态": hot_status,
+                    "说明": hot_desc
                 },
-                "Safety Majors (Cold)": {
-                    "Majors": cold_majors,
-                    "Status": cold_status,
-                    "Details": cold_desc
+                "冷门保底": {
+                    "专业": cold_majors,
+                    "状态": cold_status,
+                    "说明": cold_desc
                 }
             })
 
     return output
+
+# ======================= 测试 =======================
+if __name__ == "__main__":
+    # 测试：深圳大学 + GPA3.3 + 雅思6.5 + 商科（已优化）
+    result = recommend("深圳大学", 3.3, 6.5, "business")
+
+    print("===== 香港硕士匹配结果 =====")
+    for k, v in result.items():
+        if k != "推荐列表":
+            print(f"{k}: {v}")
+
+    print("\n===== 智能推荐（热门优先）=====")
+    for i, item in enumerate(result["推荐列表"], 1):
+        hot = item['热门专业']
+        cold = item['冷门保底']
+        print(f"\n{i}. {item['港校梯队']}")
+        print(f"   🔥 热门专业: {hot['状态']} | {', '.join(hot['专业'])}")
+        print(f"      {hot['说明']}")
+        print(f"   ❄️ 冷门保底: {cold['状态']} | {', '.join(cold['专业'])}")
+        print(f"      {cold['说明']}")
